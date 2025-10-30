@@ -1,0 +1,32 @@
+# POST http://localhost:8000/students/create
+# Content-Type: application/json
+
+# {
+#     "username":"student2"
+# }
+GET  http://localhost:8000/teachers/1
+Content-Type: application/json
+
+{}
+# PATCH http://localhost:8000/teachers/3
+# Content-Type: application/json
+
+# {
+#     "name":"WUZJjtX5rUdQGBby1EXmzYV6A"
+# }
+# DELETE  http://localhost:8000/teachers/delete/3
+# Content-Type: application/json
+# POST http://localhost:8000/students/create
+# Content-Type: application/json
+
+# {
+#     "username":"Hamza"
+# }
+
+POST http://localhost:8000/sessions/create/?num=2
+Content-Type: application/json
+
+{
+    "teacher_id":1,
+    "student_id":2
+}
