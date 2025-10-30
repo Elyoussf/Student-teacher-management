@@ -1,32 +1,52 @@
+# POST http://localhost:8000/teachers/create
+# Content-Type: application/json
+
+# {
+#     "name":"Hamza"
+# }
+# DELETE  http://localhost:8000/students/delete/1
+# Content-Type: application/json
+
+# {}
+# GET  http://localhost:8000/teachers/students/1
+# Content-Type: application/json
+
+# {}
+# GET http://localhost:8000/teachers/students/1
+# Content-Type: application/json
+
+# {
+#     "name":"WUZJjtX5rUdQGBby1EXmzYV6A"
+# }
+# DELETE  http://localhost:8000/teachers/delete/1
+# Content-Type: application/json
+
+# {}
 # POST http://localhost:8000/students/create
 # Content-Type: application/json
 
 # {
 #     "username":"student2"
 # }
-GET  http://localhost:8000/teachers/1
-Content-Type: application/json
 
-{}
-# PATCH http://localhost:8000/teachers/3
+# POST http://localhost:8000/sessions/create/?num=2
 # Content-Type: application/json
 
 # {
-#     "name":"WUZJjtX5rUdQGBby1EXmzYV6A"
+#     "teacher_id":1,
+#     "student_id":1
 # }
-# DELETE  http://localhost:8000/teachers/delete/3
+
+# PATCH http://localhost:8000/sessions/unfinish/1
 # Content-Type: application/json
-# POST http://localhost:8000/students/create
+
+# {}
+
+# PATCH http://localhost:8000/sessions/pay/1
 # Content-Type: application/json
 
 # {
-#     "username":"Hamza"
+#     "amount": 30.46,
+#     "date": "2025-10-30T23:59:59Z",
+#     "teacher_id":1
 # }
-
-POST http://localhost:8000/sessions/create/?num=2
-Content-Type: application/json
-
-{
-    "teacher_id":1,
-    "student_id":2
-}

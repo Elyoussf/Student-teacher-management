@@ -24,7 +24,7 @@ class StudentRead(Student, table = True):
 class Payment(SQLModel):  
     amount: float
     date: datetime # Corrected name and inherited from SQLModel
-    teacher_id : str = Field (foreign_key="teacherread.id")
+    teacher_id : int = Field (foreign_key="teacherread.id")
     currency : str = "MAD"
 
 class PaymentRead(Payment , table=True):
@@ -33,6 +33,7 @@ class PaymentRead(Payment , table=True):
 class Session(SQLModel):
     teacher_id : int = Field (foreign_key="teacherread.id")
     student_id : int = Field(foreign_key="studentread.id")
+    done : Optional[bool] = False
     payment_id : Optional[int] = Field(default=None, foreign_key="paymentread.id")
 
 class SessionRead(Session , table = True):

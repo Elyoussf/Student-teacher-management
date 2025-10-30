@@ -50,4 +50,9 @@ async def delete_teacher(id : str,session = Depends(get_session)):
     return {"status" : "ok"}
 
 
-
+@router.get("/{id}")
+def get_data(id : int,session = Depends(get_session)):
+    student = session.exec(select(StudentRead).where(StudentRead.id == id)).first()
+    if not student:
+        raise HTTPException(404 , "Not found!")
+    return student

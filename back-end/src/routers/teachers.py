@@ -42,7 +42,7 @@ async def get_all(session = Depends(get_session)):
         to_send.append(obj)
     return to_send
 
-@router.get("/{id}")
+@router.get("/students/{id}")
 async def get_students_sessions_by_id(id : str , session = Depends(get_session)):
     stmnt = select(SessionRead).join(StudentRead, SessionRead.student_id == StudentRead.id).where(SessionRead.teacher_id == id)
     res = session.exec(stmnt)
@@ -70,12 +70,14 @@ async def update_teacher(id : int ,body:Teacher , session = Depends(get_session)
 
 @router.delete("/delete/{id}")
 async def delete_teacher(id : int,session = Depends(get_session)):
-    teacher = session.exec(select(TeacherRead).where(TeacherRead.id == id))
-
+    teacher = session.exec(select(TeacherRead).where(TeacherRead.id == id)).first()
+    
     if not teacher:
         raise HTTPException(404 , "No Teacher found with given id!")
-    
-    session.delete(teacher.first())
+    sessions = session.exec(select(SessionRead).where(SessionRead.teacher_id ==id)).all()
+    for ss in sessions:
+        session.delete(ss)
+    session.delete(teacher)
     session.commit()
     return {"status" : "ok"}
 
