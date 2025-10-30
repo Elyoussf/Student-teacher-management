@@ -1,0 +1,48 @@
+Admin :
+
+1 - He should be able to login 
+2 - crud teacher 
+3 - crud student 
+4 - crud session between teacher and student
+5 - approve/reject the status of a session 
+6 - change the payement status 
+
+Session 
+{
+    id : string
+    teacher : Teacher_id (FK)
+    student : Student_id (FK)  // every session has one student , every student has one or many sessions
+    done : bool
+    paid : bool
+}
+Teacher {
+    id : string 
+    name : string
+    password : string
+}
+
+Student
+{
+    id 
+    username : string
+    sessions : session_id (FK)
+}
+
+Payement
+{
+    id 
+    amount:float
+    date: date
+    to : Teacher_id (FK)
+    done : bool
+}
+
+Admin
+{
+    id : string
+    username/nickname : string 
+    photo_url : string 
+    password : string
+    transactions : total (num of rows in payement)
+    currrency : string 
+}
